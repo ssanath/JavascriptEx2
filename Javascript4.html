@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Verbing</title>
+    </head>
+    <body>
+        <script>
+            function verbing(str) {
+                if (str.length >= 3) {
+                    var last = str.slice(str.length-3);
+                    if(last == "ing") {
+                        str += "ly";
+                    }
+                    else {
+                        str += "ing";
+                    }
+                }
+                return str;
+            }
+        </script>
+        <script>
+            var res = verbing("swimming");
+            document.write(res);
+        </script>
+    </body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>ReadingList</title>
+    </head>
+        <body>
+            <script>
+                // Array of book objects
+let books = [
+    { title: "The Hobbit", author: "J.R.R. Tolkien", alreadyRead: true },
+    { title: "The Lord of the Rings", author: "J.R.R. Tolkien", alreadyRead: false },
+    { title: "To Kill a Mockingbird", author: "Harper Lee", alreadyRead: true }
+];
+
+// Iterate through the array of books
+books.forEach(book => {
+    // Log the book title and author
+    console.log(`${book.title} by ${book.author}`);
+    
+    // Check if the book has been read or not
+    if (book.alreadyRead) {
+        console.log(`You already read "${book.title}" by ${book.author}`);
+    } else {
+        console.log(`You still need to read "${book.title}" by ${book.author}`);
+    }
+});
+
+            </script>
+        </body>
+</html>

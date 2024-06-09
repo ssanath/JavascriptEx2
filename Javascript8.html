@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>WordGuess</title>
+    </head>
+        <body>
+            <script>
+                // Global arrays and variables
+let word = ['F', 'O', 'X'];
+let guessedLetters = Array(word.length).fill('_');
+let rewardAmount = 0;
+let guessedLettersSet = new Set();
+let hangmanState = 0;
+
+// Function to generate a random reward amount
+function generateReward() {
+    return Math.floor(Math.random() * 100) + 1; // Generates a random number between 1 and 100
+}
+
+// Function to guess a letter
+function guessLetter(letter) {
+    // Check if the letter has already been guessed
+    if (guessedLettersSet.has(letter)) {
+        console.log("You already guessed that letter. Try another one.");
+        return;
+    }
+    
+    let foundLetter = false;
+    let reward = generateReward(); // Generate a random reward
+    
+    // Iterate through the word letters
+    for (let i = 0; i < word.length; i++) {
+        if (word[i] === letter) {
+            guessedLetters[i] = letter; // Update guessed letters array
+            foundLetter = true;
+            reward *= 2; // Multiply reward if multiple letters found
+        }
+    }
+    
+    // Log current guessed letters
+    console.log(guessedLetters.join(''));
+    
+    // Update reward based on whether a letter was found
+    if (foundLetter) {
+        rewardAmount += reward;
+        console.log(`Congratulations! You found a new letter. Reward: $${reward}`);
+    } else {
+        rewardAmount -= reward;
+        console.log(`Sorry, no luck. Reward deducted: $${reward}`);
+        hangmanState++; // Increase hangman state
+    }
+    
+    // Add guessed letter to the set
+    guessedLettersSet.add(letter);
+    
+    // Check if all letters have been guessed
+    if (!guessedLetters.includes('_')) {
+        console.log(`Congratulations! You won the game. Final reward: $${rewardAmount}`);
+    }
+    
+    // Check if hangman state reached maximum
+    if (hangmanState === 6) {
+        console.log("Sorry, you lost the game.");
+        // Display hangman here
+    }
+}
+
+// Test the game by calling guessLetter with various letters
+guessLetter('A'); // No match
+guessLetter('F'); // Match: F__
+guessLetter('O'); // Match: FO_
+guessLetter('X'); // Match: FOX
+guessLetter('X'); // Already guessed, no action
+guessLetter('Y'); // No match
+
+            </script>
+        </body>
+</html>

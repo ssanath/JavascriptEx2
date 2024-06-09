@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>CALCULATOR</title>
+    </head>
+    <body>
+        <script>
+            function squareNumber(num) {
+                return num*num;
+            }
+            function halfNumber(num) {
+                return num/2;
+            }
+            function percentOf(num1, num2) {
+                return num1/num2*100;
+            }
+            function areaOfCircle(radius) {
+                var num = Math.PI*radius*radius;
+                return num.toFixed(2);
+            }
+        </script>
+        <script>
+            var num1 = prompt("Num1");
+            var num2 = prompt("Num2");
+            var res = squareNumber(num1);
+            document.write("Result: " + res);
+            console.log(`The result of squaring the number ${num1} is ${res}.`);
+            res = halfNumber(num1);
+            document.write("\nHalf number: " + res);
+            console.log(`Half of ${num1} is ${res}.`);
+            res = percentOf(num1,num2);
+            console.log(`${num1} is ${res}% of ${num2}.`)
+            res = areaOfCircle(num1);
+            console.log(`The area of a circle with radius ${num1} is ${res}.`);
+        </script>
+    </body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>CashRegister</title>
+    </head>
+        <body>
+            <script>
+                var cartForParty = {  
+	                banana: "1.25",
+	                handkerchief: ".99",
+	                Tshirt: "25.01",
+	                apple: "0.60",
+                    nalgene: "10.34",
+	                proteinShake: "22.36"
+	            };
+
+                function cashRegister(cart) {
+                    let tot = 0;
+                    for(item in cart) {
+                        tot += parseFloat(cart[item]);
+                    }
+                    console.log(`The total price is "${tot}"`);
+                }
+                cashRegister(cartForParty);
+            </script>
+        </body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>CashRegister</title>
+    </head>
+        <body>
+            <script>
+                function validateCreditCard(cardNumber) {
+  // Remove dashes from the card number
+  cardNumber = cardNumber.replace(/-/g, '');
+
+  // Check if the card number contains exactly 16 digits
+  if (cardNumber.length !== 16) {
+    return false;
+  }
+
+  // Check if all characters in the card number are digits
+  if (!/^\d+$/.test(cardNumber)) {
+    return false;
+  }
+
+  // Check if there are at least two different digits represented
+  const digits = new Set(cardNumber);
+  if (digits.size < 2) {
+    return false;
+  }
+
+  // Check if the final digit is even
+  if (parseInt(cardNumber.charAt(15)) % 2 !== 0) {
+    return false;
+  }
+
+  // Calculate the sum of all digits
+  let sum = 0;
+  for (let i = 0; i < 16; i++) {
+    sum += parseInt(cardNumber.charAt(i));
+  }
+
+  // Check if the sum is greater than 16
+  if (sum <= 16) {
+    return false;
+  }
+
+  // If all conditions are met, the card number is valid
+  return true;
+}
+
+// Test cases
+console.log(validateCreditCard("9999-9999-8888-0000")); // true
+console.log(validateCreditCard("6666-6666-6666-1666")); // true
+console.log(validateCreditCard("a923-3211-9c01-1112")); // false
+console.log(validateCreditCard("4444-4444-4444-4444")); // false
+console.log(validateCreditCard("1111-1111-1111-1110")); // false
+console.log(validateCreditCard("6666-6666-6666-6661")); // false
+
+            </script>
+        </body>
+</html>

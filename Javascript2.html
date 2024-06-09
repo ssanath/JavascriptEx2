@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>MixUp</title>
+    </head>
+    <body>
+        <script>
+            function mixUp(str1,str2) {
+                var str = "";
+                str += str2.slice(0,2) + str1.slice(2) + " " + str1.slice(0,2) + str2.slice(2);
+                return str;
+            }
+        </script>
+        <script>
+            var str = mixUp("dog","dinner");
+            document.write(str);
+        </script>
+    </body>
+</html>
